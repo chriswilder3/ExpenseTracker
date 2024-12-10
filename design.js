@@ -4,7 +4,9 @@ const observer = new IntersectionObserver(
             if(entry){
                 if( entry.isIntersecting){
                     entry.target.classList.add('slide-out')
+                    observer.unobserve(entry.target)
                 }
+                
             }
         }
         )
@@ -14,9 +16,10 @@ const observer = new IntersectionObserver(
 
 document.addEventListener('DOMContentLoaded', ()=>{
     const elements = document.querySelectorAll('.slide-in')
-    if(elements){
-        elements.forEach(){
-            
+    
+        elements.forEach(() =>{
+            observer.observe(elements);
         }
-    }
+        )
+    
 })

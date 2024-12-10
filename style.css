@@ -8,6 +8,13 @@ body{
     opacity: 0;
 }
 .slide-out{
-    transform: translate(0%);
+    transform: translate(0);
     opacity: 1;
+}
+
+.dollargreen{
+    color: #4CAF50;
+}
+.link-blue{
+    color:#03A9F4;
 }
