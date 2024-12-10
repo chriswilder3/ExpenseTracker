@@ -17,8 +17,8 @@ const observer = new IntersectionObserver(
 document.addEventListener('DOMContentLoaded', ()=>{
     const elements = document.querySelectorAll('.slide-in')
     
-        elements.forEach(() =>{
-            observer.observe(elements);
+        elements.forEach((element) =>{
+            observer.observe(element);
         }
         )
     

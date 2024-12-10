@@ -2,9 +2,15 @@ body{
     background-color: #E0E0E0;
     font-family: "Poppins", serif;
 }
+.main-title{
+    color: #FFC107;
+}
+.hero{
+    background-color: #07223d;
+}
 .slide-in{
     transform: translate(-100%);
-    transition: all 1s ease-in-out;
+    transition: all 1.4s ease-in-out;
     opacity: 0;
 }
 .slide-out{
