@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     let netIncome = salary-totalExpenses;
 
     let profileNetIncomeDisplay = document.querySelector('.profile-net-income');
-    profileNetIncomeDisplay.textContent = ` Your net income : ${netIncome}`;
+    profileNetIncomeDisplay.textContent = ` Your net income : ${netIncome} ${currency}`;
 
 
 
