@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     if('profileExpenses' in currentProfileInfo){
         totalExpenses = Number(currentProfileInfo['profileExpenses']);
         
-        profileExpensesDisplay.textContent = `Total expenses : ${totalExpenses} `;
+        profileExpensesDisplay.textContent = `Total expenses : ${totalExpenses} ${currency} `;
     }
     else{
         profileExpensesDisplay.innerHTML = 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     let netIncome = Number(salary)-totalExpenses;
 
     let profileNetIncomeDisplay = document.querySelector('.profile-net-income');
-    profileNetIncomeDisplay.textContent = ` Your net income : ${netIncome} ${currency}`;
+    profileNetIncomeDisplay.textContent = ` Net income : ${netIncome} ${currency}`;
 
 
 
