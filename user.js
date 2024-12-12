@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded',() =>{
     
     let currentProfileInfo = localStorage.getItem(`${currentProfileName}`);
     
-    // let profileInfoDisplay = document.querySelector('.profile-info')
-    // profileInfoDisplay.textContent = `${currentProfileInfo}`
 
     currentProfileInfo = JSON.parse(currentProfileInfo)
-
+    // console.log(currentProfileInfo);
+    // console.log(currentProfileInfo['profileExpenses']);
     
     const currency = currentProfileInfo['profileCurrency'] ;
 
@@ -33,7 +32,8 @@ document.addEventListener('DOMContentLoaded',() =>{
     let totalExpenses = 0;
 
     if('profileExpenses' in currentProfileInfo){
-        totalExpenses = currentProfileInfo['profileExpenes'];
+        totalExpenses = Number(currentProfileInfo['profileExpenses']);
+        
         profileExpensesDisplay.textContent = `Total expenses : ${totalExpenses} `;
     }
     else{
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded',() =>{
             `Total expenses : 0 <br/> <span class="text-base text-red-500"> Add more transactions! </span>`;
     }
 
-    let netIncome = salary-totalExpenses;
+    let netIncome = Number(salary)-totalExpenses;
 
     let profileNetIncomeDisplay = document.querySelector('.profile-net-income');
     profileNetIncomeDisplay.textContent = ` Your net income : ${netIncome} ${currency}`;
