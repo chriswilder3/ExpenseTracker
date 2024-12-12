@@ -24,7 +24,7 @@
         // Optional: Provide success feedback
         if(profileNames === []){
             
-            profileList.textContent = 'No profiles exist'
+            profileList.innerHTML = 'No profiles exist'
         }
 
         const itemBtns = document.querySelectorAll('.item-btn')
@@ -34,7 +34,7 @@
                     const itemName = btn.value;
                     console.log(itemName);
                     localStorage.setItem('current-profile',`${itemName}`)
-                    window.open('./user.html')
+                    window.open('./user.html', '_self')
             })
         )
         

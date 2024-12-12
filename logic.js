@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.querySelector('#email').value.trim();
         const startDate = document.querySelector('#start-date').value.trim();
 
-        // Log data for debugging
+        
         console.log(name, salary, currency, savingsGoal, email, startDate);
 
         const existingProfiles = localStorage.getItem('profile-names');
@@ -28,6 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add name to the profile list and save to local storage
             profileNames.push(name);
             localStorage.setItem('profile-names', JSON.stringify(profileNames));
+
+            const newProfile = {
+                profileSalary : salary,
+                profileCurrency : currency,
+                profileSavingsGoal : savingsGoal,
+                profileEmail : email,
+                profileStartDate : startDate,
+            }
+
+            localStorage.setItem(`${name}`, JSON.stringify(newProfile));
 
             // Optional: Provide success feedback
             alert('Profile created successfully!');
