@@ -17,13 +17,26 @@ document.addEventListener('DOMContentLoaded', function() {
             let transactionArray = currentProfileInfo['profileTransactions'];
 
             // console.log( transactionArray.length);
-            console.log( transactionArray.splice(btnIndex,1));
 
-            console.log(transactionArray);
+            // Before We delete the index element lets get its value here
 
-            // Currently correct transactionArray remains, But
+            const deletedTrx = transactionArray[btnIndex];
 
+            transactionArray.splice(btnIndex,1);
+
+            // Currently correct transactionArray remains.
+            // But expenses must be changed accordingly also.
+
+            let totalExpenses = Number(currentProfileInfo['profileExpenses'])
+            console.log(totalExpenses, deletedTrx['transactionAmount']);
+
+            totalExpenses = totalExpenses - Number(deletedTrx['transactionAmount']);
+
+
+            // Now update the currentProfileInfo object with changed values.
+            currentProfileInfo['profileExpenses'] = totalExpenses;
             currentProfileInfo['profileTransactions'] = transactionArray;
+
 
             localStorage.setItem(`${currentProfileName}`, JSON.stringify(currentProfileInfo));
             alert(' Transaction Deleted Successfully! ');

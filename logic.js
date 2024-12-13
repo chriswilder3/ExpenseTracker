@@ -40,8 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem(`${name}`, JSON.stringify(newProfile));
 
             // Optional: Provide success feedback
-            alert('Profile created successfully!');
             profileForm.reset();
+            alert('Profile created successfully!');
+            window.open('./profiles.html','_self')
         }
     });
 });
