@@ -44,8 +44,16 @@ document.addEventListener('DOMContentLoaded',() =>{
     let netIncome = Number(salary)-totalExpenses;
 
     let profileNetIncomeDisplay = document.querySelector('.profile-net-income');
-    profileNetIncomeDisplay.textContent = ` Net income : ${netIncome} ${currency}`;
 
+    if(netIncome <1000 && netIncome > 0 ){
+        profileNetIncomeDisplay.innerHTML = ` Net income : ${netIncome} ${currency} <br> <p class='text-lg text-amber-600'> Warning! Nearing money overuse. </p> `;
+    }
+    else if(netIncome <0){
+        profileNetIncomeDisplay.innerHTML = ` Net income : ${netIncome} ${currency} <br> <p class='text-lg text-red-800'> Warning! You are under debt. </p> `;
+    }
+    else{
+        profileNetIncomeDisplay.innerHTML = ` Net income : ${netIncome} ${currency} `;
+    }    
     let profileTransactionsDisplay = document.querySelector('.transactions')
     
     if('profileTransactions' in currentProfileInfo){
