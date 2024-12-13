@@ -38,7 +38,7 @@ This project is part of the UnifiedMentor internship. Its a ExpenseTracker proje
 1. Clone or download the repository:
    ```bash
    git clone https://github.com/chriswilder3/ExpenseTracker.git
-   cd moneymonitor
+   cd ExpenseTracker
 
 2. Open the index.html file in any browser
 
