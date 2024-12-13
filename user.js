@@ -47,25 +47,29 @@ document.addEventListener('DOMContentLoaded',() =>{
     profileNetIncomeDisplay.textContent = ` Net income : ${netIncome} ${currency}`;
 
     let profileTransactionsDisplay = document.querySelector('.transactions')
-    let transactionArray = currentProfileInfo['profileTransactions'];
+    
+    if('profileTransactions' in currentProfileInfo){
 
-    transactionArray.forEach( (trx,index) => {
-        console.log(trx.transactionDate);
-        console.log(trx.description);
-        console.log(trx.category);
-        console.log(trx.transactionAmount);
+        let transactionArray = currentProfileInfo['profileTransactions'];
 
-        const transElem = document.createElement('div');
-        transElem.innerHTML = `<p> Txn No : ${index+1} </p>
-                               <p> Transaction date : ${trx.transactionDate} </p> 
-                               <p> Description : ${trx.description} </p> 
-                               <p> Category : ${trx.category} </p>
-                               <p> Transaction amount : ${trx.transactionAmount} ${currency} </p>
-                               `
-        profileTransactionsDisplay.appendChild(transElem);
-        
+        transactionArray.forEach( (trx,index) => {
+            // console.log(trx.transactionDate);
+            // console.log(trx.description);
+            // console.log(trx.category);
+            // console.log(trx.transactionAmount);
 
-    });
+            const transElem = document.createElement('div');
+            transElem.innerHTML = `<p> Txn No : ${index+1} </p>
+                                <p> Transaction date : ${trx.transactionDate} </p> 
+                                <p> Description : ${trx.description} </p> 
+                                <p> Category : ${trx.category} </p>
+                                <p> Transaction amount : ${trx.transactionAmount} ${currency} </p>
+                                `
+            profileTransactionsDisplay.appendChild(transElem);
+            
+
+        });
+    }
 
     
     

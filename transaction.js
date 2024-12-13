@@ -20,52 +20,61 @@ document.addEventListener('DOMContentLoaded',() =>{
 
             console.log(transactionDate, description, category, amount);
 
-            let totalExpenses;
-
-            if('profileExpenses' in currentProfileInfo){
-                totalExpenses = currentProfileInfo['profileExpenes'];
-                totalExpenses = totalExpenses + amount;
+            if(transactionDate < currentProfileInfo['profileStartDate']){
+                const errorDiv = document.querySelector('.form-error')
+                errorDiv.textContent = ' Trx date must be greater than tracking start data';
+                errorDiv.style.display = 'block'; 
                 
-            }else{
-                totalExpenses = amount; // Add current tranasction amount
-            }
-
-            
-
-
-            const newTransaction = {
-                transactionDate : transactionDate,
-                description : description,
-                category : category,
-                transactionAmount : amount
-            }
-
-            let transactionArray;
-            if('profileTransactions' in currentProfileInfo){
-                    //Note that profileTransactions is an array.
-
-                transactionArray = currentProfileInfo['profileTransactions'];
-                transactionArray.push(newTransaction);
             }
             else{
-                transactionArray= [newTransaction];
+                let totalExpenses;
+
+                if('profileExpenses' in currentProfileInfo){
+                    totalExpenses = currentProfileInfo['profileExpenses'];
+                    console.log( typeof totalExpenses, typeof amount);
+                    totalExpenses = Number(totalExpenses) + Number(amount);
+                    
+                }
+                else{
+                    totalExpenses = amount; // Add current tranasction amount
+                }
+                console.log('Exp : ', totalExpenses);
+                
+
+
+                const newTransaction = {
+                    transactionDate : transactionDate,
+                    description : description,
+                    category : category,
+                    transactionAmount : amount
+                }
+
+                let transactionArray;
+                if('profileTransactions' in currentProfileInfo){
+                        //Note that profileTransactions is an array.
+
+                    transactionArray = currentProfileInfo['profileTransactions'];
+                    transactionArray.push(newTransaction);
+                }
+                else{
+                    transactionArray= [newTransaction];
+                }
+
+                // Now we have prev currentProfileInfo, 
+                // new transactionInfo and totalExpenses.
+                // Lets update them.
+
+                currentProfileInfo['profileExpenses'] = totalExpenses;
+                currentProfileInfo['profileTransactions'] = transactionArray;
+                
+
+                // Now lets update this JS object back into the profile.
+
+                localStorage.setItem(`${currentProfileName}`,JSON.stringify(currentProfileInfo))
+                
+                alert('Profile created successfully!');
+                transactionForm.reset()
             }
-
-            // Now we have prev currentProfileInfo, 
-            // new transactionInfo and totalExpenses.
-            // Lets update them.
-
-            currentProfileInfo['profileExpenses'] = totalExpenses;
-            currentProfileInfo['profileTransactions'] = transactionArray;
-            
-
-            // Now lets update this JS object back into the profile.
-
-            localStorage.setItem(`${currentProfileName}`,JSON.stringify(currentProfileInfo))
-            
-            alert('Profile created successfully!');
-            transactionForm.reset()
-
         }
     
     )
