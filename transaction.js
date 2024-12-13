@@ -72,8 +72,10 @@ document.addEventListener('DOMContentLoaded',() =>{
 
                 localStorage.setItem(`${currentProfileName}`,JSON.stringify(currentProfileInfo))
                 
-                alert('Profile created successfully!');
-                transactionForm.reset()
+                
+                transactionForm.reset();
+                alert('Transaction added successfully!');
+                window.location.reload();
             }
         }
     

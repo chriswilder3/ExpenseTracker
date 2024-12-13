@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const txndeleteBtns = document.querySelectorAll('#delete-btn');
-    const txndeleteIndexVals = document.querySelector('#delete-trx-index')
+    // const txndeleteIndexVals = document.querySelector('#delete-trx-index')
 
     txndeleteBtns.forEach( (txndeleteBtn, btnIndex) => {
 
         txndeleteBtn.addEventListener("click", function() {
 
-            const trxIndex = document.querySelector('#delete-trx-index').value    
-            console.log(trxIndex , btnIndex);
+            console.log( btnIndex);
 
             const currentProfileName = localStorage.getItem('current-profile')
 
@@ -17,11 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let transactionArray = currentProfileInfo['profileTransactions'];
 
-            console.log( transactionArray.length);
+            // console.log( transactionArray.length);
             console.log( transactionArray.splice(btnIndex,1));
 
+            console.log(transactionArray);
 
+            // Currently correct transactionArray remains, But
 
+            currentProfileInfo['profileTransactions'] = transactionArray;
+
+            localStorage.setItem(`${currentProfileName}`, JSON.stringify(currentProfileInfo));
+            alert(' Transaction Deleted Successfully! ');
+            window.location.reload();
 
             
         });
