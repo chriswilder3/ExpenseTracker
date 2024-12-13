@@ -72,6 +72,8 @@ document.addEventListener('DOMContentLoaded',() =>{
                                 <p> Description : ${trx.description} </p> 
                                 <p> Category : ${trx.category} </p>
                                 <p> Transaction amount : ${trx.transactionAmount} ${currency} </p>
+                                <input type='hidden' value='${index}' id='delete-trx-index'>
+                                <button type='button' class='bg-red-400 rounded text-base text-black hover:bg-red-500 p-2' id='delete-btn'> Delete Txn </button> 
                                 `
             profileTransactionsDisplay.appendChild(transElem);
             
