@@ -46,7 +46,26 @@ document.addEventListener('DOMContentLoaded',() =>{
     let profileNetIncomeDisplay = document.querySelector('.profile-net-income');
     profileNetIncomeDisplay.textContent = ` Net income : ${netIncome} ${currency}`;
 
+    let profileTransactionsDisplay = document.querySelector('.transactions')
+    let transactionArray = currentProfileInfo['profileTransactions'];
 
+    transactionArray.forEach( (trx,index) => {
+        console.log(trx.transactionDate);
+        console.log(trx.description);
+        console.log(trx.category);
+        console.log(trx.transactionAmount);
+
+        const transElem = document.createElement('div');
+        transElem.innerHTML = `<p> Txn No : ${index+1} </p>
+                               <p> Transaction date : ${trx.transactionDate} </p> 
+                               <p> Description : ${trx.description} </p> 
+                               <p> Category : ${trx.category} </p>
+                               <p> Transaction amount : ${trx.transactionAmount} ${currency} </p>
+                               `
+        profileTransactionsDisplay.appendChild(transElem);
+        
+
+    });
 
     
     
